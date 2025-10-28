@@ -30,7 +30,10 @@ pipeline {
     }
     steps {
         echo 'Deploying to Synology NAS via SSH...'
-
+echo 'DEBUG: Checking if build files exist...'
+        // 'build' 폴더 안의 파일 목록을 콘솔에 출력합니다.
+        // 여기서 파일이 안 보이면 빌드가 잘못된 것입니다.
+        sh 'ls -l build/'
         // [수정!] 'publishers' 리스트와 'sshPublisherDesc'로 감싸줍니다.
         sshPublisher(
             publishers: [
