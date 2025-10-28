@@ -24,6 +24,32 @@ pipeline {
                 sh 'npm run build'
             }
         }
+        stage('3. Deploy to Synology Nas'){
+            when {
+                branch 'main'
+            }
+            steps {
+                echo 'Deploying to Synology NAS via SSH...'
+
+                sshPublisher(
+                    configName: 'My-Synology-NAS',
+
+                    transfers:[
+                        sshTransfer(
+                            sourceFiles: 'build/**', 
+
+                        // [소스] 'build'라는 폴더명은 제외하고 내부 파일만 전송
+                        removePrefix: 'build', 
+
+                        // [목표] 시놀로지 NAS의 배포 폴더
+                        // (5-1 단계에서 만든 /web/react-app)
+                        remoteDirectory: '/web/react-app'
+                        )
+                    ],
+                    execCommand: 'echo "Deployment finished!"'
+                )
+            }
+        }
         // (참고) 테스트 단계
         /*
         stage('3. Run Tests') {
