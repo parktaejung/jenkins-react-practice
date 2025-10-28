@@ -25,9 +25,7 @@ pipeline {
             }
         }
         stage('3. Deploy to Synology NAS') {
-    when { 
-        branch 'main' 
-    }
+   
     steps {
         echo 'Deploying to Synology NAS via SSH...'
 echo 'DEBUG: Checking if build files exist...'
