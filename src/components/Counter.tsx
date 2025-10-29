@@ -34,7 +34,7 @@ const Counter: React.FC<{}> = () => {
                 </p>
                 <p>상태 : {isEven ? '짝수입니다' : '홀수입니다'}</p>
                 <button onClick={increment} style={{padding:'10px 20px',fontSize:'1.2em'}}>
-                    카운트증가
+                    카운트증가!
                 </button>
             </div>
 
