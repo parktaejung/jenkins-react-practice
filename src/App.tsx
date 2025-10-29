@@ -7,7 +7,7 @@ import './App.css';
 
 const Home: React.FC<{}> = () =>(
   <h2 style={{marginTop: '50px'}}>
-      좌측 메뉴에서 실습할 항목을 선택해주세요
+      좌측 메뉴에서 실습할 항목을 선택해주세요 혜진!
   </h2>
 )
 const App: React.FC<{}> = () => {
