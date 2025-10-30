@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Counter from './components/Counter';
 import DataFetching from './components/DataFetching';
 import './App.css';
+import { AuthProvider } from './context/AuthContext';
+import ContextAndHook from './components/ContextAndHook';
 
 const Home: React.FC<{}> = () =>(
   <h2 style={{marginTop: '50px'}}>
@@ -13,6 +15,7 @@ const Home: React.FC<{}> = () =>(
 )
 const App: React.FC<{}> = () => {
   return (
+    <AuthProvider>
     <Router>
       <div className="App" style={{display:'flex'}}>
         <nav style={{width:'250px',padding:'20px',borderRight: '1px solid #444', height: '100vh', textAlign: 'left', backgroundColor: '#333' }}>
@@ -34,6 +37,11 @@ const App: React.FC<{}> = () => {
               📡 Day 3: 데이터 통신 (axios) 실습
               </Link>
             </li>
+            <li style={{ marginBottom: '15px' }}>
+              <Link to="/day4-context-hook" style={{ color: 'white', textDecoration: 'none' }}>
+                🟠 Day 4: Context & Custom Hook 실습
+              </Link>
+            </li>
           </ul>
         </nav>
 
@@ -42,10 +50,12 @@ const App: React.FC<{}> = () => {
             <Route path="/" element={<Home />} />
             <Route path="/day2-hook" element={<Counter />} />
             <Route path="/day3-fetch" element={<DataFetching />} />
+            <Route path="/day4-context-hook" element={<ContextAndHook />} />
           </Routes>
         </main>
       </div>
     </Router>
+    </AuthProvider>
   );
 }
 
