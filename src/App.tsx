@@ -3,6 +3,7 @@
 import React from 'react'; // React.FC를 사용하기 위해 필요
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Counter from './components/Counter';
+import DataFetching from './components/DataFetching';
 import './App.css';
 
 const Home: React.FC<{}> = () =>(
@@ -28,6 +29,11 @@ const App: React.FC<{}> = () => {
               ⚛️ Day 2: useState, useEffect 실습
               </Link>
             </li>
+             <li style={{marginBottom:'15px'}}>
+              <Link to="/day3-fetch" style={{color:'white',textDecoration:'none'}}>
+              📡 Day 3: 데이터 통신 (axios) 실습
+              </Link>
+            </li>
           </ul>
         </nav>
 
@@ -35,6 +41,7 @@ const App: React.FC<{}> = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/day2-hook" element={<Counter />} />
+            <Route path="/day3-fetch" element={<DataFetching />} />
           </Routes>
         </main>
       </div>
