@@ -7,7 +7,12 @@ import DataFetching from './components/DataFetching';
 import './App.css';
 import { AuthProvider } from './context/AuthContext';
 import ContextAndHook from './components/ContextAndHook';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import QueryFetching from './components/QueryFetching';
+import HookForm from './components/HookForm';
 
+
+const queryClient = new QueryClient();
 const Home: React.FC<{}> = () =>(
   <h2 style={{marginTop: '50px'}}>
       좌측 메뉴에서 실습할 항목을 선택해주세요 혜진!
@@ -15,6 +20,7 @@ const Home: React.FC<{}> = () =>(
 )
 const App: React.FC<{}> = () => {
   return (
+    <QueryClientProvider client={queryClient}>
     <AuthProvider>
     <Router>
       <div className="App" style={{display:'flex'}}>
@@ -42,6 +48,16 @@ const App: React.FC<{}> = () => {
                 🟠 Day 4: Context & Custom Hook 실습
               </Link>
             </li>
+            <li style={{ marginBottom: '15px' }}>
+              <Link to="/day5-query" style={{ color: 'yellow', textDecoration: 'none' }}>
+                🟡 Day 5: React Query 실습
+              </Link>
+            </li>
+            <li style={{ marginBottom: '15px' }}>
+              <Link to="/day5-form" style={{ color: 'lightblue', textDecoration: 'none' }}>
+                🔵 Day 5: React Hook Form 실습
+              </Link>
+            </li>
           </ul>
         </nav>
 
@@ -51,11 +67,14 @@ const App: React.FC<{}> = () => {
             <Route path="/day2-hook" element={<Counter />} />
             <Route path="/day3-fetch" element={<DataFetching />} />
             <Route path="/day4-context-hook" element={<ContextAndHook />} />
+            <Route path="/day5-query" element={<QueryFetching />} />
+            <Route path="/day5-form" element={<HookForm />} />
           </Routes>
         </main>
       </div>
     </Router>
     </AuthProvider>
+    </QueryClientProvider>
   );
 }
 
